@@ -14,10 +14,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    $products = \App\Catalog\Models\Product::all();
+    foreach ($products as $product) {
+        //dump($product->attributes()->get()->first()->values());
+        dump($product);
+        //$product->relationsToArray();
+    }
+
+
 //    App::basePath();
-    $filepath = base_path() . "/storage/1cExchange/2022-06-12_15-57-14_e8b58f0def346a0a8f2c288ac7e9f4e4/import___8692c389-162a-49cb-b54c-075662d6ac0f.xml";
-    $parser = new \App\OneCExchange\ImportFileParser($filepath);
-    $parser->parse();
+//    $filepath = base_path() . "/storage/1cExchange/2022-06-12_15-57-14_e8b58f0def346a0a8f2c288ac7e9f4e4/import___8692c389-162a-49cb-b54c-075662d6ac0f.xml";
+//    $parser = new \App\OneCExchange\ImportFileParser($filepath);
+//    $parser->parse();
 
 //    $property = new \App\Properties\Property();
 //    $property->name = 'Страна';
@@ -51,7 +59,7 @@ Route::get('/', function () {
 
 Route::any('/exchange', [\App\Http\Controllers\Exchenge::class, 'catalogIn'])
     ->middleware(config('protocolExchange1C.middleware'))
-    ->name('1sProtocolCatalog');;
+    ->name('1sProtocolCatalog');
 
 //Route::group(
 //    [

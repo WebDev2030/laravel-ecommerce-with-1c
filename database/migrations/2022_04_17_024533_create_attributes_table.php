@@ -16,10 +16,8 @@ return new class extends Migration
         Schema::create('attributes', function (Blueprint $table) {
             $table->id();
 
-            $table->bigInteger('entity_id')->unsigned();
-            $table->foreign('entity_id')->references('id')->on('entities');
-
             $table->string('name');
+            $table->string('model');
             $table->string('slug');
             $table->string('type'); // int, string, bool, dictionary, enum
             $table->json('settings'); // for dictionary {table_name: countries}

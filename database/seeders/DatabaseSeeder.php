@@ -2,10 +2,13 @@
 
 namespace Database\Seeders;
 
-use http\Env;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Database\Seeders\Catalog\Attribute;
+use Database\Seeders\Catalog\CurrencySeeder;
+use Database\Seeders\Catalog\ProductSeeder;
+use Database\Seeders\EAV\AttributeSeeder;
+use Database\Seeders\EAV\EntitySeeder;
+use Database\Seeders\OneCExchange\UserSeeder;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,11 +19,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-        $user = new \App\Models\User();
-        $user->name = env('1C_NAME');
-        $user->email = env('1C_EMAIL');
-        $user->password = Hash::make(env('1C_PASSWORD'));
-        $user->save();
+        $this->call([
+            UserSeeder::class,
+            CurrencySeeder::class,
+
+            AttributeSeeder::class,
+
+            ProductSeeder::class,
+        ]);
     }
 }

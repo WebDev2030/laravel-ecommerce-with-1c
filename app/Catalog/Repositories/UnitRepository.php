@@ -9,8 +9,6 @@ use App\Repositories\BaseRepository;
 
 class UnitRepository extends BaseRepository implements UnitRepositoryInterface
 {
-    use WithExternalIDTrait;
-
     /**
      * @var class-string
      */

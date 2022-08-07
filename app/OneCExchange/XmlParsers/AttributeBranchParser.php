@@ -5,6 +5,7 @@ namespace App\OneCExchange\XmlParsers;
 use App\EAV\Models\Attribute;
 use App\EAV\Repositories\AttributeRepository;
 use App\OneCExchange\Repository;
+use App\Repositories\BaseRepository;
 use SimpleXMLElement;
 use function Doctrine\StaticAnalysis\DBAL\makeMeACustomConnection;
 
@@ -35,10 +36,10 @@ class AttributeBranchParser extends BranchParser
         return ($arUnits);
     }
 
-//    function getRepository(): Repository
-//    {
-//        return new AttributeRepository();
-//    }
+    function getRepository(): BaseRepository
+    {
+        return new AttributeRepository();
+    }
 
     /**
      * Возвращает массив всех разделов

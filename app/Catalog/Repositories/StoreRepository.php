@@ -9,8 +9,6 @@ use App\Repositories\BaseRepository;
 
 class StoreRepository extends BaseRepository implements PriceTypeRepositoryInterface
 {
-    use WithExternalIDTrait;
-
     /**
      * @var class-string
      */
